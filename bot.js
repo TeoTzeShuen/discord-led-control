@@ -26,51 +26,41 @@ client.on('ready', () => {
 client.on('message', msg => {
     try
     {
-        //standard ONOFF commands
-        if (msg.content === prefix + 'led on') {
+        switch (msg.content){
+            case (prefix + 'led on'):
             msg.reply(messagerecievedtext);
                 light.setPower(true).then(success => {
                 msg.reply('success');
-              });
-        }
-        if (msg.content === prefix + 'led off') {
+            });
+            break;
+            case(prefix + 'led off'):
             msg.reply(messagerecievedtext);
                 light.setPower(false).then(success => {
                 msg.reply('success');
             });
-        }
-        //rgb +w(r+g+b)
-        if (msg.content === prefix + 'led red') {
+            break;
+            case(prefix + 'led red'):
             msg.reply(messagerecievedtext);
                 light.setColor(255,0,0).then(success => {
                 msg.reply('success');
             });
-            
-        }
-        if (msg.content === prefix + 'led green') {
+            break;
+            case(prefix + 'led green'):
             msg.reply(messagerecievedtext);
                 light.setColor(0,255,0).then(success => {
                 msg.reply('success');
             });
-        }
-        if (msg.content === prefix + 'led blue') {
+            case(prefix + 'led blue'):
             msg.reply(messagerecievedtext);
                 light.setColor(0,0,255).then(success => {
                 msg.reply('success');
             });
-        }
-        if (msg.content === prefix + 'led white') {
+            case(prefix + 'led white'):
             msg.reply(messagerecievedtext);
                 light.setColor(255,255,255).then(success => {
                 msg.reply('success');
             });
-        }
-        if (msg.content === prefix + 'led debug') {
-            msg.react('✔️');
-            msg.reply('debug started @' + Date.now());
-            msg.reply('Authenticating to discord servers...');
-            client.channels.cache.get(780593453624066078).send("hi");
-        }
+        }  
     }
     catch
     {
