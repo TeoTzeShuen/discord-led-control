@@ -14,6 +14,10 @@ const { Control } = require('magic-home');
 let light = new Control("192.168.1.100");
 //Flux stuff end
 
+//config stuff goes here
+const config = require('./config.json');
+//config stuff ends
+
 client.on('ready', () => {
     console.log(`Logged in as ${client.user.tag}!`);
 });
@@ -76,4 +80,4 @@ client.on('message', msg => {
 
 
 //BOT TOKEN - do not touch
-client.login('NzU4MTU3NjIxNzMxMjYyNDg0.X2q3Tg.mN0ctlJcAnnE4qnacDB-UYFYJ3Y');
+client.login(config.token);
